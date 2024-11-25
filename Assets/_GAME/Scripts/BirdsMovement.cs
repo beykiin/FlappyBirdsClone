@@ -3,29 +3,49 @@ using UnityEngine;
 public class BirdsMovement : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
-    [SerializeField] private GameObject birds;
-    [SerializeField] private float speed;
+    [SerializeField] private float maxTime = 0.5f;
+    
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
+    private float _currentTime;
+    private bool _isJumping;
+    
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _isJumping = true;
     }
 
     private void Update()
     {
         
-        birds.transform.position += Vector3.right * speed * Time.deltaTime;
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        // Bastýkça sürekli artarak zýplama
+        Timer();
+        if (Input.GetKeyDown(KeyCode.Space) && _isJumping)
+        {
+            Jump();
+            _currentTime = 0;
+            _isJumping = false;
+        }
+    }
 
+    void Jump()
+    {
+        _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
 
-
-
-        //}
-        //transform.position = (Vector2.up * jumpForce).normalized;
+    void Timer()
+    {
+        if (!_isJumping)
+        {
+            _currentTime += Time.deltaTime;
+            if (_currentTime > maxTime)
+            {
+                _isJumping = true;
+            }
+        }
+        Debug.Log(_currentTime);
     }
 }
