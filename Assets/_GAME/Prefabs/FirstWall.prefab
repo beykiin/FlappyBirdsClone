@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3591390566635707593}
   - component: {fileID: 6025203842480257461}
+  - component: {fileID: 6159216529815812604}
   m_Layer: 0
   m_Name: FirstWall
   m_TagString: Untagged
@@ -79,6 +80,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.068632126, y: 5.4877977}
   m_EdgeRadius: 0
+--- !u!114 &6159216529815812604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423688067727834228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d245aaea01fb54982ae4b60f29edd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: {fileID: 1423688067727834228}
+  distance: 10.08
 --- !u!1 &2484016892815710867
 GameObject:
   m_ObjectHideFlags: 0
